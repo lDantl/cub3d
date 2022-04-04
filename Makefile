@@ -1,23 +1,24 @@
 NAME			=	cub3d
 
-#NAMEBON			=	cub3d_bonus
+NAMEBONUS 		= cub3dbonus
 
-CC				=	gcc
+CC				=	gcc -g
 
-CFLAGS			=	-Wall -Wextra -Werror -I libft/ -g
+CFLAGS			=	-Wall -Wextra -Werror -I libft/
 
 LIBFT			=	libft/libft.a
 
-HEADER			=	src/cub3d.h libft/libft.h gnl/get_next_line.h
+HEADER			=	include/cub3d.h libft/libft.h gnl/get_next_line.h
 
 GNL				=	get_next_line.c get_next_line_utils.c
 
-#MLX				= 	libmlx.a
+MLX				= 	minilibx_opengl_20191021/libmlx.a
 
-#LIBS			= 	-Lmlx -lmlx -framework OpenGL -framework AppKit -lm
-
-SRCS				=	main.c ft_error.c free_all.c
-
+SRCS			=	cub3d.c						free_all.c					ft_error.c\
+					parser_1.c					parser_2.c					parser_3.c							parser_4.c\
+					raycasting/image.c			raycasting/keycode.c		raycasting/map_fill_image.c				raycasting/raycasting_the_third_part.c\
+					raycasting/raycasting.c		raycasting/point.c			raycasting/raycasting_second_part.c		raycasting/utils.c
+					
 SRC				=	$(addprefix src/, $(SRCS)) \
 					$(addprefix gnl/, $(GNL))
 
@@ -30,11 +31,18 @@ all				:	$(NAME)
 $(NAME)			:	$(LIBFT) $(OBJ) $(HEADER)
 	@echo "\n"
 	@echo "\033[0;32mCompiling cub3d..."
-	@$(CC) $(CFLAGS) $(LIBFT) -o $(NAME) $(OBJ) ${LIBS}
+	@$(CC) $(CFLAGS) $(LIBFT) -o $(NAME) $(OBJ) -framework OpenGL -framework AppKit -lmlx $(MLX)
 	@echo "\n\033[0mDone !"
 
 $(LIBFT)		:
 	@$(MAKE) -sC libft/
+
+bonus			:	$(LIBFT) $(OBJ) $(HEADER)
+	@echo "\n"
+	@echo "\033[0;32mCompiling cub3d..."
+	@$(CC) $(CFLAGS) $(LIBFT) -o $(NAMEBONUS) $(OBJ) -framework OpenGL -framework AppKit -lmlx $(MLX)
+	@echo "\n\033[0mDone !"
+
 
 %.o				:		%.c
 	@printf "\033[0;33mGenerating cub3d objects... %-33.33s\r" $@
@@ -56,11 +64,12 @@ fclean			: clean
 	@rm -f $(OBJ)
 	@echo "\nDeleting executable..."
 	@rm -f $(NAME)
+	@rm -f $(NAMEBONUS)
 	@echo "\033[0m"
 
 re				:	fclean all
 
 norm:
-	@norminette $(SRC) cub3d.h
+	@norminette $(SRC) include/cub3d.h
 
 .PHONY: all clean fclean re test norm bonus

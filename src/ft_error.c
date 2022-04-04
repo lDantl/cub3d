@@ -6,11 +6,11 @@
 /*   By: rdanica <rdanica@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 10:27:25 by rdanica           #+#    #+#             */
-/*   Updated: 2022/01/29 19:34:28 by rdanica          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:16:08 by rdanica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	ft_error(int i)
 {

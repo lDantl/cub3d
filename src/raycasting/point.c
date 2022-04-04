@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   point.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdanica <rdanica@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/19 12:16:47 by rdanica           #+#    #+#             */
-/*   Updated: 2022/04/03 20:16:04 by rdanica          ###   ########.fr       */
+/*   Created: 2021/12/15 14:10:50 by ghumbert          #+#    #+#             */
+/*   Updated: 2022/04/04 13:32:38 by rdanica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	close_all(t_data *data)
+t_point	point_set(int x, int y)
 {
-	(void)data;
-	exit(0);
-	return (0);
-}
+	t_point	pnt;
 
-void	free_str(char *string_free)
-{
-	if (string_free)
-		free(string_free);
-}
-
-void	free_argv(char **argv)
-{
-	int	i;
-
-	i = -1;
-	if (argv && *argv != '\0')
-	{
-		if (*argv)
-			while (argv[++i])
-				free_str(argv[i]);
-	}
-	if (argv)
-		free(argv);
+	pnt.x = x;
+	pnt.y = y;
+	return (pnt);
 }

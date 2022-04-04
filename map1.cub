@@ -1,8 +1,8 @@
 
-EA ./image/4.xpm
-WE ./image/3.xpm
-NO ./image/1.xpm
-SO ./image/2.xpm
+WE ./image/2.xpm
+EA ./image/1.xpm
+NO ./image/3.xpm
+SO ./image/4.xpm
 
 C 209,183,152
 
